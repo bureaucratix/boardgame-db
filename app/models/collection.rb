@@ -8,7 +8,6 @@ class Collection < ApplicationRecord
     belongs_to :user
     belongs_to :game
     
-    validates :name, length: { in: 1..255 }
     validates :personal_rating, numericality: { allow_nil: true,less_than_or_equal_to: 10, greater_than_or_equal_to: 1, only_integer: true }
 
 end

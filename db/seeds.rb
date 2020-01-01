@@ -35,5 +35,5 @@
 #   end
 
 alex = User.create(name: "Alex", email: "bureaucratix@gmail.com")
-bc = Game.create(name: "BattleCON", min_players: 1, max_players: 4, recommended_players: 2, playtime: 15, complexity: 2.5)
-alexbc = Collection.create(user_id: alex.id, game_id: bc.id, personal_rating: 5, last_played_time: Time.now())
+bc = Game.create(name: "BattleCON", min_players: 1, max_players: 4, recommended_players: 2, playtime: 15, complexity: 3)
+alexbc = Collection.create(user: alex, game: bc)
