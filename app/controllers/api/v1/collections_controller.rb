@@ -5,12 +5,12 @@ class Api::V1::CollectionsController < ApplicationController
   def index
     @collections = Collection.all
 
-    render json: @collections
+    render json: @collections, status: :accepted
   end
 
   # GET /collections/1
   def show
-    render json: @collection
+    render json: { collection: CollectionSerializer.new(@collection) }, status: :accepted
   end
 
   # POST /collections
@@ -18,7 +18,7 @@ class Api::V1::CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
 
     if @collection.save
-      render json: @collection, status: :created, location: @collection
+      render json: { collection: CollectionSerializer.new(@collection) }, status: :created, location: @collection
     else
       render json: @collection.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class Api::V1::CollectionsController < ApplicationController
   # PATCH/PUT /collections/1
   def update
     if @collection.update(collection_params)
-      render json: @collection
+      render json: { collection: CollectionSerializer.new(@collection) }, status: :accepted
     else
       render json: @collection.errors, status: :unprocessable_entity
     end
