@@ -11,7 +11,7 @@ class Game < ApplicationRecord
 
     has_many :collections
 
-    validates :name, length: { in: 1..255 }
+    validates :name, length: { in: 1..255 }, uniqueness: true
     validates :min_players, numericality: { allow_nil: true,less_than_or_equal_to: 24, greater_than_or_equal_to: 1, only_integer: true }
     validates :max_players, numericality: { allow_nil: true,less_than_or_equal_to: 24, greater_than_or_equal_to: 1, only_integer: true }
     validates :recommended_players, numericality: { allow_nil: true,less_than_or_equal_to: 24, greater_than_or_equal_to: 1, only_integer: true }
